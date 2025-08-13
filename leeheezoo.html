@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이희주 | Mega coffee 노예</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* 기본 폰트 및 부드러운 스크롤 적용 */
+        html {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        /* 스크롤 애니메이션을 위한 기본 스타일 */
+        .reveal {
+            position: relative;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: 1s all ease;
+        }
+        .reveal.active {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-200">
+
+    <!-- ===== 헤더 및 내비게이션 ===== -->
+    <header class="bg-gray-900/80 backdrop-blur-sm fixed top-0 left-0 right-0 z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-white">HEEJUDY</a>
+            
+            <!-- 데스크탑 내비게이션 -->
+            <nav class="hidden md:flex space-x-8">
+                <a href="#about" class="hover:text-cyan-400 transition-colors">소개</a>
+                <a href="#skills" class="hover:text-cyan-400 transition-colors">기술</a>
+                <a href="#portfolio" class="hover:text-cyan-400 transition-colors">포트폴리오</a>
+                <a href="#contact" class="hover:text-cyan-400 transition-colors">연락처</a>
+            </nav>
+
+            <!-- 모바일 메뉴 버튼 (햄버거) -->
+            <button id="mobile-menu-button" class="md:hidden text-white">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+        
+        <!-- 모바일 메뉴 (숨겨진 상태) -->
+        <div id="mobile-menu" class="hidden md:hidden">
+            <a href="#about" class="block py-2 px-6 text-center hover:bg-gray-700">소개</a>
+            <a href="#skills" class="block py-2 px-6 text-center hover:bg-gray-700">기술</a>
+            <a href="#portfolio" class="block py-2 px-6 text-center hover:bg-gray-700">포트폴리오</a>
+            <a href="#contact" class="block py-2 px-6 text-center hover:bg-gray-700">연락처</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 pt-24">
+
+        <!-- ===== Hero 섹션 (메인) ===== -->
+        <section id="hero" class="text-center py-10 md:py-20">
+             <!-- src에 이미지 파일 경로를 넣어주세요 (예: "profile.jpg") -->
+            <img src="images/profile.jpg" alt="프로필 사진" class="w-40 h-40 mx-auto rounded-full mb-6 border-4 border-gray-700 shadow-lg">
+            <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">안녕하세요, 이희주입니다.</h1>
+            <p class="text-lg md:text-xl text-gray-400 mb-8">전에는 서브웨이 노예였다가, 지금은 메가커피 노예입니다.</p>
+            <div class="flex justify-center space-x-6">
+                <!-- 아이콘: Heroicons (https://heroicons.com/) -->
+                <a href="#" class="text-gray-400 hover:text-white transition-colors" title="GitHub">
+                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.492.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.378.203 2.398.1 2.651.64.7 1.03 1.595 1.03 2.688 0 3.848-2.338 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd" /></svg>
+                </a>
+                <a href="#" class="text-gray-400 hover:text-white transition-colors" title="Email">
+                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z" /><path d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z" /></svg>
+                </a>
+            </div>
+        </section>
+
+        <!-- ===== 소개 (About Me) ===== -->
+        <section id="about" class="py-20 reveal">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">소개</h2>
+            <div class="grid md:grid-cols-5 gap-10 items-center">
+                <div class="md:col-span-3 text-lg leading-relaxed text-gray-300">
+                    <p class="mb-4">저는 올해 20살이고 6개월의 서브웨이 경력을 가지고있습니다. 현재는 '메가커피'라는 카페 프랜차이즈와 노예 계약을 했습니다.</p>
+                    <p class="mb-4">취미로는 '발로란트'라는 게임을 하고 있습니다. 저는 제 자신이 잘한다고 생각해서 다른 사람들이 저한테 뭐라고 그러면 짜증이 많이 납니다.</p>
+                    <p>근데 저는 개벌레 브론즈가 맞는거 같습니다. 저는 병신입니다. 감사합니다.</p>
+                </div>
+                <div class="md:col-span-2 relative h-80 rounded-lg shadow-2xl overflow-hidden">
+                    <img src="https://placehold.co/600x400/1e293b/38bdf8?text=Workspace" alt="작업 공간 이미지" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== 기술 (Skills) ===== -->
+        <section id="skills" class="py-20 reveal">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">기술</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 text-center">
+                <div class="bg-gray-800 p-6 rounded-lg hover:bg-gray-700 transition-colors">
+                    <p class="text-5xl md:text-6xl mb-2">🤬</p>
+                    <h3 class="text-lg md:text-xl font-semibold">쌍욕하기</h3>
+                </div>
+                <div class="bg-gray-800 p-6 rounded-lg hover:bg-gray-700 transition-colors">
+                    <p class="text-5xl md:text-6xl mb-2">🩸</p>
+                    <h3 class="text-lg md:text-xl font-semibold">마법의 날</h3>
+                </div>
+                <div class="bg-gray-800 p-6 rounded-lg hover:bg-gray-700 transition-colors">
+                    <p class="text-5xl md:text-6xl mb-2">🐒</p>
+                    <h3 class="text-lg md:text-xl font-semibold">빡대가리</h3>
+                </div>
+                <div class="bg-gray-800 p-6 rounded-lg hover:bg-gray-700 transition-colors">
+                    <p class="text-5xl md:text-6xl mb-2">🐷</p>
+                    <h3 class="text-lg md:text-xl font-semibold">폭식하기</h3>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== 포트폴리오 (Portfolio) ===== -->
+        <section id="portfolio" class="py-20 reveal">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">포트폴리오</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 프로젝트 카드 1 -->
+                <div class="bg-gray-800 rounded-lg overflow-hidden group">
+                    <img src="images/subway.png" alt="프로젝트 1" class="w-full h-48 object-cover group-hover:scale-105 transition-transform">
+                    <div class="p-6">
+                        <h3 class="text-xl md:text-2xl font-bold mb-2">서브웨이</h3>
+                        <p class="text-gray-400 mb-4">샌드위치 다이스끼❤️</p>
+                        <a href="#" class="text-cyan-400 hover:underline">자세히 보기 &rarr;</a>
+                    </div>
+                </div>
+                <!-- 프로젝트 카드 2 -->
+                <div class="bg-gray-800 rounded-lg overflow-hidden group">
+                    <img src="images/MeagCoffee.jpeg" alt="프로젝트 2" class="w-full h-48 object-cover group-hover:scale-105 transition-transform">
+                    <div class="p-6">
+                        <h3 class="text-xl md:text-2xl font-bold mb-2">메가커피</h3>
+                        <p class="text-gray-400 mb-4">진상 손놈 씨발놈❤️</p>
+                        <a href="#" class="text-cyan-400 hover:underline">자세히 보기 &rarr;</a>
+                    </div>
+                </div>
+                <!-- 프로젝트 카드 3 -->
+                <div class="bg-gray-800 rounded-lg overflow-hidden group">
+                    <img src="images/Val.jpeg" alt="프로젝트 3" class="w-full h-48 object-cover group-hover:scale-105 transition-transform">
+                    <div class="p-6">
+                        <h3 class="text-xl md:text-2xl font-bold mb-2">발로란트</h3>
+                        <p class="text-gray-400 mb-4">똥쟁이년💩</p>
+                        <a href="#" class="text-cyan-400 hover:underline">자세히 보기 &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== 연락처 (Contact) ===== -->
+        <section id="contact" class="py-20 text-center reveal">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">현피 뜰 새끼만 연락해라.</h2>
+            <p class="text-lg text-gray-400 mb-8">010-XXXX-XXXX</p>
+            <a href="mailto:your.email@example.com" class="bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-3 px-6 md:px-8 rounded-full transition-colors text-md md:text-lg">
+                전화 하기
+            </a>
+        </section>
+    </main>
+
+    <!-- ===== 푸터 ===== -->
+    <footer class="border-t border-gray-800 mt-20">
+        <div class="container mx-auto px-6 py-6 text-center text-gray-500">
+            <p>&copy; 2025 이희주. ssibal jotgatda.</p>
+        </div>
+    </footer>
+
+    <script>
+        // 모바일 메뉴 토글
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // 스크롤 시 섹션이 부드럽게 나타나는 효과
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100; // 모바일에서 더 빨리 나타나도록 값 조정
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                } else {
+                    reveals[i].classList.remove("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        reveal(); // 초기 로드 시 한 번 실행
+    </script>
+
+</body>
+</html>
