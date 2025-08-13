@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* 기본 폰트 및 부드러운 스크롤 적용 */
+        html {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        /* 스크롤 애니메이션을 위한 기본 스타일 */
+        .reveal {
+            position: relative;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: 1s all ease;
+        }
+        .reveal.active {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-200">
+
+    <!-- ===== 헤더 및 내비게이션 ===== -->
+    <header class="bg-gray-900/80 backdrop-blur-sm fixed top-0 left-0 right-0 z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-white">HEEJUDY</a>
+            
+            <!-- 데스크탑 내비게이션 -->
+            <nav class="hidden md:flex space-x-8">
+                <a href="#about" class="hover:text-cyan-400 transition-colors">소개</a>
+                <a href="#skills" class="hover:text-cyan-400 transition-colors">주챔</a>
+                <a href="#portfolio" class="hover:text-cyan-400 transition-colors">최근 전적/승률</a>
+                <a href="#contact" class="hover:text-cyan-400 transition-colors">인스타</a>
+            </nav>
+
+            <!-- 모바일 메뉴 버튼 (햄버거) -->
+            <button id="mobile-menu-button" class="md:hidden text-white">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+        
+        <!-- 모바일 메뉴 (숨겨진 상태) -->
+        <div id="mobile-menu" class="hidden md:hidden">
+            <a href="#about" class="block py-2 px-6 text-center hover:bg-gray-700">소개</a>
+            <a href="#skills" class="block py-2 px-6 text-center hover:bg-gray-700">주챔</a>
+            <a href="#portfolio" class="block py-2 px-6 text-center hover:bg-gray-700">최근 전적/승률</a>
+            <a href="https://www.instagram.com/p0sh_ha" class="block py-2 px-6 text-center hover:bg-gray-700">인스타</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 pt-24">
+
+        <!-- ===== Hero 섹션 (메인) ===== -->
+        <section id="hero" class="text-center py-10 md:py-20">
+             <!-- src에 이미지 파일 경로를 넣어주세요 (예: "profile.jpg") -->
+            <img src="images/profile.jpg" alt="프로필 사진" class="w-40 h-40 mx-auto rounded-full mb-6 border-4 border-gray-700 shadow-lg">
+            <h1 class="text-4xl md:text-6xl font-bold text-white mb-4" style="font-size: 36px;">안녕하세요! HEEJUDY입니다.</h1>
+            <p class="text-lg md:text-xl text-gray-400 mb-8">본업이 작곡가인 게임 중독자.</p>
+            <div class="flex justify-center space-x-6">
+                <!-- 아이콘: Heroicons (https://heroicons.com/) -->
+                <a href="#" class="text-gray-400 hover:text-white transition-colors" title="GitHub">
+                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.492.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.378.203 2.398.1 2.651.64.7 1.03 1.595 1.03 2.688 0 3.848-2.338 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd" /></svg>
+                </a>
+                <a href="#" class="text-gray-400 hover:text-white transition-colors" title="Email">
+                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z" /><path d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z" /></svg>
+                </a>
+            </div>
+        </section>
+
+        <!-- ===== 소개 (About Me) ===== -->
+        <section id="about" class="py-20 reveal">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">소개</h2>
+            <div class="grid md:grid-cols-5 gap-10 items-center">
+                <div class="md:col-span-3 text-lg leading-relaxed text-gray-300">
+                    <p class="mb-4">이름: 👸이희주</p>
+                    <p class="mb-4">나이: 2006년생</p>
+                    <p class="mb-4">취미: 🕹️게임</p>
+                    <p class="mb-4">본업: 🎹작곡</p>
+                </div>
+                <div class="md:col-span-2 relative h-80 rounded-lg shadow-2xl overflow-hidden">
+                    <img src="images/profile.jpg" alt="작업 공간 이미지" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== 주요 챔피언(main champions) ===== -->
+        <section id="skills" class="py-20 reveal">
+                        <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">주요 챔피언</h2>
+                        <div class="grid grid-cols-2 gap-4 md:gap-8 text-center">
+                            <!-- 게코 -->
+                            <div class="bg-gray-800 p-6 rounded-lg hover:bg-gray-700 transition-colors">
+                                <img src="images/게코.jpeg" alt="게코" class="w-32 h-32 mx-auto rounded-full mb-4 object-cover">
+                                <h3 class="text-lg md:text-xl font-semibold">게코</h3>
+                            </div>
+                            <!-- 스카이 -->
+                            <div class="bg-gray-800 p-6 rounded-lg hover:bg-gray-700 transition-colors">
+                                <img src="images/스카이.jpeg" alt="스카이" class="w-32 h-32 mx-auto rounded-full mb-4 object-cover">
+                                <h3 class="text-lg md:text-xl font-semibold">스카이</h3>
+                            </div>
+                        </div>
+        </section>
+
+        <!-- ===== 포트폴리오 (Portfolio) ===== -->
+        <section id="portfolio" class="py-20 reveal">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">게임 전적 & 챔피언별 승률</h2>
+            <div class="bg-gray-800 rounded-lg p-8 max-w-2xl mx-auto mb-8">
+                <form id="searchForm" class="flex flex-col md:flex-row items-center gap-4 justify-center">
+                    <input type="text" id="playerName" class="px-4 py-2 rounded bg-gray-700 text-white focus:outline-none" placeholder="플레이어 닉네임 입력">
+                    <button type="submit" class="bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-2 px-6 rounded transition-colors">전적 검색</button>
+                </form>
+                <div id="searchResult" class="mt-6 text-center text-gray-300"></div>
+            </div>
+            <div class="bg-gray-800 rounded-lg p-8 max-w-2xl mx-auto">
+                <h3 class="text-xl font-bold mb-4 text-center">챔피언별 승률</h3>
+                <canvas id="winrateChart" height="200"></canvas>
+            </div>
+        </section>
+
+        <!-- ===== 연락처 (Contact) ===== -->
+        <section id="contact" class="py-20 text-center reveal">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">Instagram</h2>
+            <p class="text-lg text-gray-400 mb-8">p0sh_ha</p>
+            <a href="https://www.instagram.com/p0sh_ha" class="bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-3 px-6 md:px-8 rounded-full transition-colors text-md md:text-lg">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 448 512" style="display:inline;vertical-align:middle;margin-right:8px;"><path d="M224,202.66A53.34,53.34,0,1,0,277.34,256,53.38,53.38,0,0,0,224,202.66Zm124.71-41a54,54,0,0,0-30.36-30.36C293.19,120,256,118.13,224,118.13s-69.19,1.87-94.36,13.17a54,54,0,0,0-30.36,30.36C120,162.81,118.13,200,118.13,232s1.87,69.19,13.17,94.36a54,54,0,0,0,30.36,30.36C162.81,392,200,393.87,232,393.87s69.19-1.87,94.36-13.17a54,54,0,0,0,30.36-30.36C392,349.19,393.87,312,393.87,280S392,162.81,348.71,161.66ZM224,338.66A82.66,82.66,0,1,1,306.66,256,82.75,82.75,0,0,1,224,338.66Zm85.4-148.61a19.2,19.2,0,1,1-19.2-19.2A19.2,19.2,0,0,1,309.4,190.05Z"/></svg>
+                Instagram 방문하기
+            </a>
+        </section>
+    </main>
+
+    <!-- ===== 푸터 ===== -->
+    <footer class="border-t border-gray-800 mt-20">
+        <div class="container mx-auto px-6 py-6 text-center text-gray-500">
+            <p>&copy; 2025 이희주. ssibal jotgatda.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Chart.js CDN 동적 삽입
+        (function() {
+            var script = document.createElement('script');
+            script.src = 'https://cdn.jsdelivr.net/npm/chart.js';
+            script.onload = function() {
+                // 기본 데이터 예시
+                const ctx = document.getElementById('winrateChart').getContext('2d');
+                window.winrateChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['게코', '스카이', '제트', '레이나'],
+                        datasets: [{
+                            label: '승률(%)',
+                            data: [62, 55, 48, 70],
+                            backgroundColor: [
+                                '#38bdf8', '#34d399', '#f472b6', '#fbbf24'
+                            ],
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: { display: false },
+                            title: { display: false }
+                        },
+                        scales: {
+                            y: { beginAtZero: true, max: 100 }
+                        }
+                    }
+                });
+            };
+            document.head.appendChild(script);
+        })();
+
+        // 전적 검색 폼 예시 동작 (실제 API 연동 필요)
+        document.getElementById('searchForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const player = document.getElementById('playerName').value.trim();
+            const resultDiv = document.getElementById('searchResult');
+            if(player === '') {
+                resultDiv.textContent = '닉네임을 입력하세요.';
+                return;
+            }
+            // 실제 API 연동 전 임시 예시
+            resultDiv.innerHTML = `<b>${player}</b>님의 최근 10경기: 6승 4패 (60% 승률)`;
+        });
+        // 모바일 메뉴 토글
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // 스크롤 시 섹션이 부드럽게 나타나는 효과
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100; // 모바일에서 더 빨리 나타나도록 값 조정
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                } else {
+                    reveals[i].classList.remove("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        reveal(); // 초기 로드 시 한 번 실행
+    </script>
+
+</body>
+</html>
